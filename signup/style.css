@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --black: #222222;
+    --dark: #222831;
+    --gray: #31363F;
+    --dblue: #344955;
+    --blue: #50727B;
+    --lblue: #76ABAE;
+    --white: #EEEEEE;
+    --gray8: #31363FCC;
+    --gray4: #31363F66;
+    --err: #d22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: var(--dark);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    border-radius: 7px;
+    box-shadow: 0 0 15px 15px var(--gray);
+    background: var(--gray);
+}
+
+input {
+    border: none;
+    outline: none;
+    width: 90%;
+    padding: 5px 15px;
+    text-align: center;
+    margin: 15px 0;
+    font-size: 1em;
+    background-color: var(--dblue);
+    color: var(--white);
+    border-radius: 5px;
+    transition: .2s background-color, .2s box-shadow, .2s border;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+    border-bottom: 2px solid var(--blue);
+}
+
+input[type=text]::placeholder,
+input[type=password]::placeholder,
+input[type=email]::placeholder {
+    color: var(--black);
+}
+
+input[type=text]:hover, input[type=text]:focus,
+input[type=password]:hover, input[type=password]:focus,
+input[type=email]:hover, input[type=email]:focus {
+    background-color: var(--blue);
+    border-bottom: 2px solid var(--lblue);
+}
+
+input[type=submit] {
+    box-shadow: 0 0 5px 5px var(--dblue);
+    cursor: pointer;
+}
+
+input[type=submit]:hover,
+input[type=submit]:focus {
+    background-color: var(--blue);
+    box-shadow: 0 0 5px 5px var(--blue);
+}
+
+a, a:visited, a:active {
+    text-decoration: none;
+    color: var(--blue);
+    text-align: center;
+    transition: .2s color;
+}
+
+a:hover, a:focus {
+    color: var(--lblue);
+}
+
+.err {
+    color: var(--err);
+    text-align: center;
+    margin-top: 10px;
+}

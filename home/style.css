@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --black: #222222;
+    --dark: #222831;
+    --gray: #31363F;
+    --dblue: #344955;
+    --blue: #50727B;
+    --lblue: #76ABAE;
+    --white: #EEEEEE;
+    --gray8: #31363FCC;
+    --gray4: #31363F66;
+    --err: #d22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--dark);
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: calc(1/6);
+    align-content: flex-start;
+    justify-content: space-around;
+    align-items: start;
+    height: 100vh;
+    width: 100vw;
+    gap: 15px;
+    padding: 50px;
+}
+
+section .chat {
+    width: 300px;
+    padding: 5px 15px;
+    border-radius: 7px;
+    box-shadow: 0 0 15px 15px var(--dblue);
+    background: var(--dblue);
+    color: var(--white);
+    cursor: pointer;
+}
+
+section .chat h1 {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+section .chat h3 {
+    font-size: 1em;
+    text-align: center;
+    letter-spacing: .1em;
+    text-wrap: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    margin: 15px;
+}
+
+section .chat p {
+    font-size: .7em;
+    letter-spacing: .05em;
+    text-align: center;
+}
+
+#mess {
+    width: 100vw;
+    height: 90vh;
+    margin-top: calc(30px + 3em);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 25px;
+}
+
+form {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form #back {
+    font-size: 3em;
+    color: var(--lblue);
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 8px 25px;
+    cursor: pointer;
+}
+
+form .btn {
+    font-size: 3em;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    text-shadow: 0 0 25px transparent;
+    color: var(--dblue);
+    transition: all .5s;
+}
+
+form .btn:hover, form .btn:focus, form .btn:active {
+    text-shadow: 0 0 25px var(--lblue);
+    color: var(--lblue);
+    cursor: pointer;
+}
+
+form #text {
+    width: 90vw;
+    height: 50px;
+    padding: 25px 10px;
+    font-size: 1.5em;
+    bottom: 10px;
+    left: 90px;
+    outline: none;
+    border-radius: 12px;
+    color: var(--lblue);
+    border: 1px solid var(--dblue);
+    box-shadow: 0 0 5px 5px var(--dblue);
+    background-color: var(--dblue);
+    transition: all .5s;
+}
+
+form #text:hover, #text:focus, #text:active {
+    color: var(--white);
+    border: 1px solid var(--blue);
+    box-shadow: 0 0 5px 5px var(--blue);
+    background-color: var(--blue);
+}
+
+#mess .yours {
+    text-align: right;
+    float: right;
+    clear: both;
+}
+
+#mess .theirs {
+    text-align: left;
+    float: left;
+    clear: both;
+}
+
+#mess .user {
+    font-size: 1.2em;
+    color: var(--lblue);
+    letter-spacing: .1em;
+    padding: 5px 15px 2px;
+}
+
+#mess .mess {
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 17px;
+    font-size: 1.5em;
+}
+
+#mess .mess.yours {
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+#mess .mess.theirs {
+    color: var(--white);
+    background-color: var(--dblue);
+}
