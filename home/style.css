@@ -45,6 +45,12 @@ section {
     padding: 50px;
 }
 
+section #nochats {
+    color: var(--lblue);
+    font-size: 3em;
+    text-shadow: 0 0 25px var(--lblue);
+}
+
 section .chat {
     width: 300px;
     padding: 5px 15px;
@@ -81,7 +87,6 @@ section .chat p {
 #mess {
     width: 100vw;
     height: 90vh;
-    margin-top: calc(30px + 3em);
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0 25px;
