@@ -55,7 +55,8 @@ function get_chats($con, $id) {
     while($chat = $res->fetch_assoc()) {
         $usersids = array_filter(explode(':', $chat['users']));
         $users = [];
-        foreach($usersids as $user) $users[] = select_user($con, $user);
+        foreach($usersids as $user) 
+        if (select_user($con, $user) != '') $users[] = select_user($con, $user);
 
         $chats[] = array('id' => $chat['ID'], 'name' => $chat['name'], 'users' => $users, 'date' => $chat['date']);
     }
