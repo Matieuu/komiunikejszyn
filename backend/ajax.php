@@ -10,6 +10,7 @@ require_once './utils.php';
 if ($_GET['action'] == 'generate') echo get_mess_json($con, $_GET['mess'], $_GET['count']);
 
 if ($_GET['action'] == 'send' && isset($_GET['content']) && strlen($_GET['content']) > 0 && strlen($_GET['content']) <= 255 && isset($_GET['mess'])) {
+    $content = mb_convert_encoding(urldecode($_GET['content']), 'UTF-8');
     $stmt = $con->prepare("INSERT INTO mess(sender, chat, content) VALUES (?, ?, ?)");
     $stmt->bind_param('iis', $_GET['id'], $_GET['mess'], $_GET['content']);
     $stmt->execute();

@@ -117,7 +117,7 @@ if (messid !== 0) {
             return;
         }
 
-        fetch('../backend/ajax.php?action=send&id='+ userid +'&mess='+ messid +'&count='+ count +'&content='+ content);
+        fetch('../backend/ajax.php?action=send&id='+ userid +'&mess='+ messid +'&count='+ count +'&content='+ encodeURIComponent(content));
         text.value = '';
     }
 }
