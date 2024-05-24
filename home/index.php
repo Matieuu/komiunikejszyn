@@ -84,7 +84,7 @@ if (isset($_GET['mess'])) $mess = get_mess($con, $_GET['mess'], $_GET['count'], 
     <script> 
     var userid = <?= $_GET['id'] ?>; 
     var messid = <?= isset($_GET['mess']) ? $_GET['mess'] : 0 ?>;
-    var lastMess = { sender: "<?= isset($lastsender) ? $lastsender : '' ?>", content: "<?= isset($lastmess) ? $lastmess : '' ?>" };
+    var lastMess = { sender: "<?= isset($lastsender) ? $lastsender : '' ?>", content: "<?= isset($lastmess) ? $con->real_escape_string($lastmess) : '' ?>" };
     <?= isset($_SESSION['users']) ? "console.log('".$_SESSION['users']."');" : '' ?>
     </script>
     <script src="app.js"></script>

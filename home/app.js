@@ -6,8 +6,6 @@ var generatingMess = false;
 const mess = document.getElementById('mess');
 const text = document.getElementById('text');
 
-console.log(`id: ${userid}; mess: ${messid}; count: ${count}`);
-
 function redirect(messid) {
     window.location.replace(`./index.php?id=${userid}&mess=${messid}&count=${count}`);
     this.messid = messid;
@@ -43,23 +41,33 @@ if (messid !== 0) {
             if (mess.scrollTop == 0 && !generatingMess) {
                 generatingMess = true;
                 count += 25;
-                mess.scrollTo(0, 30);
                 fetch("../backend/ajax.php?id="+ userid +"&mess="+ messid +"&action=generate&count="+ count)
                     .then(response => response.json())
                     .then(json => {
                         let lastDiv = document.querySelectorAll('.mess')[0];
                         let lastSender = document.querySelectorAll('.user')[0];
-        
+                        let firstDiv = false;
+
+                        if (json.length != 0) mess.scrollTo(0, 30);
                         for(const text of json) {
-                            if ((text['sender']+"").equalsIgnoreCase(lastSender.textContent)) {
-                                let newDiv = document.createElement('div');
-                                newDiv.classList.add(text['senderID'] == userid ? 'yours' : 'theirs');
-                                newDiv.classList.add('mess');
-                                newDiv.innerHTML = '<p>'+ text['content'] +'</p>';
-                                mess.insertBefore(newDiv, lastDiv);
-                                lastDiv = newDiv;
+                            if (!lastSender.textContent.equalsIgnoreCase(text['sender']+"")) {
+                                let newSender = document.createElement('div');
+                                newSender.classList.add(text['senderID'] === userid ? 'yours' : 'theirs');
+                                newSender.classList.add('user');
+                                newSender.innerHTML = '<p>'+ text['sender'] +'</p>';
+                                mess.insertBefore(newSender, lastSender);
+                                lastSender = newSender;
+                                firstDiv = true;
                             }
+
+                            let newDiv = document.createElement('div');
+                            newDiv.classList.add(text['senderID'] == userid ? 'yours' : 'theirs');
+                            newDiv.classList.add('mess');
+                            newDiv.innerHTML = '<p>'+ text['content'] +'</p>';
+                            mess.insertBefore(newDiv, firstDiv ? lastSender.nextSibling : lastDiv);
+                            lastDiv = newDiv;
                         }
+
                         generatingMess = false;
                     });
             }
